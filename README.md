@@ -16,7 +16,7 @@ Uma API REST simples desenvolvida com Flask para gerenciar os serviços de uma b
 
 - [Python 3.x](https://www.python.org/downloads/)
 - [Flask](https://flask.palletsprojects.com/)
-
+- [MySql[(https://www.mysql.com/downloads/)
 ### Instalação
 
 1. Clone este repositório (ou baixe os arquivos para uma pasta).
