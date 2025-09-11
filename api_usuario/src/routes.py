@@ -5,10 +5,10 @@ from flask import Blueprint
 barbearia_bp = Blueprint("barbearia", __name__)
 
 
-@barbearia_bp.route("/<int:idUser>", methods=["GET"])
+@barbearia_bp.route("/usuario/<int:idUser>", methods=["GET"])
 def get_user(idUser):
     return UserController.get_user(idUser)
     
-@barbearia_bp.route("/<int:servico_id>", methods=["GET"])
+@barbearia_bp.route("/cadastrar", methods=["POST"])
 def register_user():
     return UserController.register_user()
