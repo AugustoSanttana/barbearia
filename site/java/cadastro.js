@@ -24,7 +24,7 @@ async function cadastro() {
         if (response.ok) {
             console.log(data);
             alert(data.mensagem);
-            window.location.href = '../html/home.html';
+            window.location.href = '../html/home_perfil.html';
         } else {
             let errorMessage = "Erro no cadastro. Por favor, tente novamente.";
 
@@ -39,7 +39,7 @@ async function cadastro() {
 
     } catch (error) {
         console.error("Erro na requisição:", error);
-        alert("Erro no cadastro, CPF/CNPJ já utilizado. Por favor, tente novamente.");
+        alert("Erro no cadastro, CPF já utilizado. Por favor, tente novamente.");
     }
 }
 
