@@ -1,4 +1,4 @@
-const url = 'http://127.0.0.1:5000/barbearia/cadastro';
+const url = 'http://127.0.0.1:5000/user_routes/cadastrar';
 
 async function cadastro() {
     let name = document.getElementById('name').value;

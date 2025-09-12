@@ -6,7 +6,7 @@ class UserService:
     @staticmethod
     def create_user(name, email, password, cpf, endereco):
         new_user = UserDomain(name, email, password, cpf, endereco)
-        user = User(name=new_user.name, email=new_user.email, password=new_user.password, cpf=new_user.cpf, enreco=new_user.endereco)
+        user = User(name=new_user.name, email=new_user.email, password=new_user.password, cpf=new_user.cpf, endereco=new_user.endereco)
         db.session.add(user)
         db.session.commit()
         return user
