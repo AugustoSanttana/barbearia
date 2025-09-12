@@ -7,17 +7,17 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/cadastro.css">
-  <script defer src='../java/cadastro.js'></script> 
+  <script defer src="../java/cadastro.js"></script>
 </head>
 <body>
-  <h1 class="barber-name"> DREAM BARBER </h1>
-  <!-- Wrapper do login e ícones -->
+  <h1 class="barber-name">DREAM BARBER</h1>
+
   <div class="cadastro-wrapper">
     <img src="https://cdn-icons-png.flaticon.com/512/1085/1085825.png" alt="Tesoura" class="icon-left">
 
     <div class="cadastro-container">
       <h2>Cadastro</h2>
-      <form>
+      <form id="cadastroForm">
 
         <div class="input-group">
           <label for="name">Nome</label>
@@ -43,7 +43,9 @@
           <label for="endereco">Endereço</label>
           <input type="text" id="endereco" name="endereco" placeholder="Digite seu endereço" required>
         </div>
+
         <button type="submit">Cadastrar</button>
+      </form>
     </div>
 
     <img src="https://cdn-icons-png.flaticon.com/512/1085/1085825.png" alt="Tesoura" class="icon-right">
