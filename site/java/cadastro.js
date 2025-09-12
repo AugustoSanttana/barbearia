@@ -7,80 +7,44 @@ async function cadastro() {
     let password = document.getElementById('password').value;
     let endereco = document.getElementById('endereco').value;
 
-    if (!name) {
-        alert("Nome é obrigatório");
+    if (!name || !email || !password || !cpf || !endereco) {
+        alert("Todos os campos são obrigatórios.");
         return;
     }
-
-    if (!email) {
-        alert("Email é obrigatório");
-        return;
-    }
-
-    if (!password) {
-        alert("Senha é obrigatória");
-        return;
-    }
-
-    if (!cpf) {
-        alert("CPF/CNPJ é obrigatório");
-        return;
-    }
-
-    if (!endereco) {
-        alert("Você precisa colocar sua data de nascimento");
-        return;
-    }
-
 
     try {
-        let api = await fetch(url, {
+        let response = await fetch(url, {
             method: "POST",
-            body: JSON.stringify({
-                "name": name,
-                "email": email,
-                "user_type_id": 1,
-                "password": password,
-                "cpf": cpf,
-                "endereco": endereco
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, user_type_id: 1, password, cpf, endereco })
         });
 
-        if (api.ok) {
-            let resposta = await api.json();
-            console.log(resposta);
-            alert(resposta.data);
-            window.location.href = '../html/login.html';
+        let data = await response.json();
+
+        if (response.ok) {
+            console.log(data);
+            alert(data.mensagem);
+            window.location.href = '../html/home.html';
         } else {
-            let respostErrors = await api.json();
+            let errorMessage = "Erro no cadastro. Por favor, tente novamente.";
 
-           
-            if (respostErrors.data && respostErrors.data.errors) {
-                let errorMessage = "";
-                if (respostErrors.data.errors.cpf_cnpj) {
-                    errorMessage = respostErrors.data.errors.cpf_cnpj[0];
-                } else if (respostErrors.data.errors.password) {
-                    errorMessage = respostErrors.data.errors.password[0];
-                } else if (respostErrors.data.errors.email) {
-                    errorMessage = respostErrors.data.errors.email[0];
-                } else {
-                    errorMessage = "Erro no cadastro. Por favor, tente novamente.";
-                }
-
-                alert(errorMessage);
-            } else {
-                alert("Erro desconhecido. Por favor, tente novamente.");
+            if (data.data && data.data.errors) {
+                if (data.data.errors.cpf_cnpj) errorMessage = data.data.errors.cpf_cnpj[0];
+                else if (data.data.errors.email) errorMessage = data.data.errors.email[0];
+                else if (data.data.errors.password) errorMessage = data.data.errors.password[0];
             }
+
+            alert(errorMessage);
         }
+
     } catch (error) {
-        console.log("Erro na requisição:", error);
+        console.error("Erro na requisição:", error);
         alert("Erro no cadastro, CPF/CNPJ já utilizado. Por favor, tente novamente.");
     }
-
-
-
 }
 
+// Previne reload do form e chama a função cadastro()
+document.getElementById('cadastroForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    cadastro();
+});
