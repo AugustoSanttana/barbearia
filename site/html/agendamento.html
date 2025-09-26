@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento - Barbearia</title>
+  <style>
+    .container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: var(--bg-light, #fff);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Título */
+.titulo-pagina {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--primary-color, #d4af37); /* dourado, se já tiver */
+}
+
+/* Inputs e selects */
+.input-padrao {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+/* Botão */
+.btn-padrao {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary-color, #d4af37); 
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-padrao:hover {
+  background-color: var(--primary-dark, #b8962f);
+}
+
+   </style> 
+</head>
+<body>
+  <div class="container">
+    <h2 class="titulo-pagina">Agendamento</h2>
+    <form class="form-agendamento">
+      <div class="form-group">
+        <label for="nome">Nome do Cliente</label>
+        <input type="text" id="nome" class="input-padrao" placeholder="Digite seu nome" required>
+      </div>
+
+      <div class="form-group">
+        <label for="servico">Serviço</label>
+        <select id="servico" class="input-padrao" required>
+          <option value="">Selecione...</option>
+          <option value="corte">Corte de Cabelo</option>
+          <option value="barba">Barba</option>
+          <option value="corte_barba">Corte + Barba</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="barbeiro">Barbeiro</label>
+        <select id="barbeiro" class="input-padrao" required>
+          <option value="">Selecione...</option>
+          <option value="joao">João</option>
+          <option value="pedro">Pedro</option>
+          <option value="carlos">Carlos</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="data">Data</label>
+        <input type="date" id="data" class="input-padrao" required>
+      </div>
+
+      <div class="form-group">
+        <label for="hora">Hora</label>
+        <input type="time" id="hora" class="input-padrao" required>
+      </div>
+
+      <button type="submit" class="btn-padrao">Confirmar Agendamento</button>
+    </form>
+  </div>
+</body>
+</html>
