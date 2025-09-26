@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dream Barber</title>
+  <title>Dream Barber - Perfil</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/home.css">
@@ -22,8 +22,9 @@
         <a href="#inicio">Início</a>
         <a href="perfil.html" class="btn-perfil">Perfil</a>
         <a href="#servicos">Serviços</a>
-        <a href="#agenda">Agendar</a>
+        <a href="agendamento.html" class="btn-perfil" id="linkAgenda">Agenda</a>
         <a href="#contato" class="btn-outline">Contato</a>
+        <button id="btnLogout" class="btn-outline">Sair</button>
       </nav>
     </div>
   </header>
@@ -34,7 +35,7 @@
         <div class="hero-text">
           <h2>Bem-vindo à Dream Barber</h2>
           <p>Atmosfera clássica, profissionais experientes e cortes que combinam com você.</p>
-          <a href="#agenda" class="btn-primary">Agende seu horário</a>
+          <a href="agendamento.html" class="btn-primary">Agende seu horário</a>
         </div>
         <div class="hero-image" aria-hidden="true"></div>
       </div>
@@ -61,21 +62,6 @@
       </div>
     </section>
 
-    <section id="agenda" class="booking container">
-      <h3 class="section-title">Agende Online</h3>
-      <p>Escolha data e horário. Atendimento rápido e pontual.</p>
-      <form class="booking-form" onsubmit="alert('Formulário simulado — implemente envio real.'); return false;">
-        <select name="servico" required>
-          <option value="">Selecione o serviço</option>
-          <option value="corte">Corte Masculino</option>
-          <option value="barba">Barba Completa</option>
-          <option value="combo">Combo</option>
-        </select>
-        <input type="datetime-local" name="datahora" required>
-        <button class="btn-primary" type="submit">Confirmar</button>
-      </form>
-    </section>
-
     <section id="contato" class="contact container">
       <h3 class="section-title">Contato</h3>
       <div class="contact-grid">
@@ -88,11 +74,29 @@
     </section>
   </main>
 
-
-
   <script>
-    // atualiza ano no rodapé
-    document.getElementById('ano').textContent = new Date().getFullYear();
+   
+    const token = localStorage.getItem('token');
+    if (!token) {
+        alert("Você precisa estar logado para acessar esta página.");
+        window.location.href = 'login.html';
+    }
+
+   
+    document.getElementById('btnLogout').addEventListener('click', () => {
+        localStorage.removeItem('token');
+        alert("Você saiu com sucesso!");
+        window.location.href = 'login.html';
+    });
+
+    
+    document.getElementById('linkAgenda').addEventListener('click', function(e) {
+        if (!token) {
+            e.preventDefault();
+            alert("Você precisa estar logado para acessar a agenda.");
+            window.location.href = 'login.html';
+        }
+    });
   </script>
 </body>
 </html>

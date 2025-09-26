@@ -6,20 +6,21 @@
   <title>Login Barbearia</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/login.css">>
+  <link rel="stylesheet" href="../css/login.css">
+  <script defer src="../java/login.js"></script>
 </head>
 <body>
   <h1 class="barber-name"> DREAM BARBER </h1>
-  <!-- Wrapper do login e ícones -->
+  
   <div class="login-wrapper">
     <img src="https://cdn-icons-png.flaticon.com/512/1085/1085825.png" alt="Tesoura" class="icon-left">
 
     <div class="login-container">
       <h2>Login</h2>
-      <form>
+      <form id="loginForm">
         <div class="input-group">
-          <label for="username">Email</label>
-          <input type="text" id="username" name="username" placeholder="Digite seu Email" required>
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" placeholder="Digite seu Email" required>
         </div>
 
         <div class="input-group">
