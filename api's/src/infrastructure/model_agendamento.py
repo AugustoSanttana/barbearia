@@ -11,6 +11,7 @@ class Agendamento(db.Model):
     data = db.Column(db.Date, nullable=False)
     hora = db.Column(db.Time, nullable=False)
     criado_em = db.Column(db.DateTime, default=datetime.utcnow)
+    status = db.Column(db.String(20), nullable=False, default='pendente')
 
 
     cliente = db.relationship("Usuario", backref="agendamentos")

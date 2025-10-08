@@ -4,6 +4,8 @@ from src.config.data_base import db, init_db
 from src.routes import user_routes  
 from src.routes import agendamento_routes  
 from flask_cors import CORS
+from flask_migrate import Migrate
+
 
 def create_app():
     app = Flask(__name__)
@@ -24,6 +26,8 @@ def create_app():
     # -----------------------------------
 
     init_db(app)
+
+    migrate = Migrate(app, db)
 
     app.register_blueprint(user_routes, url_prefix="/user_routes")
     app.register_blueprint(agendamento_routes, url_prefix="/barbearia")

@@ -22,10 +22,19 @@ def login():
 
 #-------------------------------------#
 
-@agendamento_routes.route("/agendamento", methods=["POST"])
-def criar_agendamento():
-    return AgendamentoController.criar_agendamento()
 
 @agendamento_routes.route("/agendamentos", methods=["GET"])
 def listar_agendamentos():
     return AgendamentoController.listar_agendamentos()
+
+@agendamento_routes.route("/agendamento", methods=["POST"])
+def criar_agendamento():
+    return AgendamentoController.criar_agendamento()
+
+@agendamento_routes.route("/agendamentos/<int:id>/cancelar", methods=["PUT"])
+def cancelar_agendamento(id):
+    return AgendamentoController.cancelar_agendamento(id)
+
+@agendamento_routes.route("/agendamentos/<int:id>/concluir", methods=["PUT"])
+def concluir_agendamento(id):
+    return AgendamentoController.concluir_agendamento(id)
