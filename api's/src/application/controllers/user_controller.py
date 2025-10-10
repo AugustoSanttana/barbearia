@@ -5,6 +5,10 @@ from src.infrastructure.model_usuario import Usuario
 from src.config.data_base import db
 from werkzeug.security import check_password_hash
 from src.config.auth import gerar_token
+from src.config.auth import verificar_token
+from src.infrastructure.model_agendamento import Agendamento
+
+
 
 
 class UserController:
@@ -47,3 +51,36 @@ class UserController:
 
         token = gerar_token(usuario.id)
         return jsonify({"token": token})
+    
+    @staticmethod
+    @verificar_token
+    def perfil_usuario():
+        usuario = Usuario.query.get(request.user_id)
+
+        if not usuario:
+            return jsonify({"erro": "Usuário não encontrado"}), 404
+
+        agendamentos = Agendamento.query.filter_by(cliente_id=usuario.id).all()
+
+        agendamentos_data = [
+            {
+                "id": ag.id,
+                "profissional": ag.profissional,
+                "servico": ag.servico,
+                "data": ag.data.strftime("%d/%m/%Y"),
+                "hora": ag.hora.strftime("%H:%M"),
+                "status": ag.status
+            }
+            for ag in agendamentos
+        ]
+
+        usuario_data = {
+            "id": usuario.id,
+            "nome": usuario.nome,
+            "email": usuario.email,
+            "cpf": usuario.cpf,
+            "endereco": usuario.endereco,
+            "agendamentos": agendamentos_data
+        }
+
+        return jsonify(usuario_data), 200

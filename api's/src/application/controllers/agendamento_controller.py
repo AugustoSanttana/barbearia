@@ -77,21 +77,20 @@ class AgendamentoController:
 
     @staticmethod
     @verificar_token
-    def cancelar_agendamento(id):
-        user_id = request.user_id
-        agendamento = Agendamento.query.get(id)
+    def cancelar_agendamento(agendamento_id):
+        agendamento = Agendamento.query.filter_by(
+            id=agendamento_id, cliente_id=request.user_id
+        ).first()
 
         if not agendamento:
             return jsonify({"erro": "Agendamento não encontrado"}), 404
 
-        if agendamento.cliente_id != user_id:
-            return jsonify({"erro": "Você não tem permissão para cancelar este agendamento."}), 403
-
         if agendamento.status != "pendente":
-            return jsonify({"erro": "Agendamento já foi concluído ou cancelado"}), 400
+            return jsonify({"erro": "Não é possível cancelar este agendamento"}), 400
 
         agendamento.status = "cancelado"
         db.session.commit()
+
         return jsonify({"mensagem": "Agendamento cancelado com sucesso!"}), 200
 
 

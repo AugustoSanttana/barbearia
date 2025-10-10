@@ -20,6 +20,10 @@ def register_user():
 def login():
     return UserController.login()
 
+@user_routes.route("/perfil", methods=["GET"])
+def perfil_usuario():
+    return UserController.perfil_usuario()
+
 #-------------------------------------#
 
 
@@ -31,10 +35,10 @@ def listar_agendamentos():
 def criar_agendamento():
     return AgendamentoController.criar_agendamento()
 
-@agendamento_routes.route("/agendamentos/<int:id>/cancelar", methods=["PUT"])
-def cancelar_agendamento(id):
-    return AgendamentoController.cancelar_agendamento(id)
-
 @agendamento_routes.route("/agendamentos/<int:id>/concluir", methods=["PUT"])
 def concluir_agendamento(id):
     return AgendamentoController.concluir_agendamento(id)
+
+@agendamento_routes.route("/cancelar/<int:agendamento_id>", methods=["PUT"])
+def cancelar_agendamento(agendamento_id):
+    return AgendamentoController.cancelar_agendamento(agendamento_id)
