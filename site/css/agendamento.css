@@ -7,14 +7,14 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Título */
+
 .titulo-pagina {
   text-align: center;
   margin-bottom: 20px;
   color: var(--primary-color, #c49a6c);
 }
 
-/* Inputs e selects */
+
 .input-padrao {
   width: 100%;
   padding: 10px;
@@ -25,7 +25,7 @@
   margin-bottom: 15px;
 }
 
-/* Botão */
+
 .btn-padrao {
   width: 100%;
   padding: 12px;

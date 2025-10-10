@@ -1,4 +1,3 @@
-/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +5,6 @@
   font-family: 'Gagalin';
 }
 
-/* Body */
 body {
   min-height: 100vh;
   background: linear-gradient(135deg, #333, #c49a6c);
@@ -16,7 +14,6 @@ body {
   padding-top: 50px;
 }
 
-/* Nome da barbearia */
 .barber-name {
   font-size: 36px;
   font-weight: 700;
@@ -28,22 +25,19 @@ body {
   margin-bottom: 40px;
 }
 
-/* Wrapper para alinhar ícones e cadastro */
 .cadastro-wrapper {
   display: flex;
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap; /* responsivo: ícones podem ir abaixo em telas pequenas */
+  flex-wrap: wrap; 
   justify-content: center;
 }
 
-/* Ícones */
 .icon-left, .icon-right {
   width: 60px;
   height: 60px;
 }
 
-/* Container do cadastro */
 .cadastro-container {
   background: #fff;
   padding: 30px;
@@ -53,13 +47,11 @@ body {
   text-align: center;
 }
 
-/* Títulos do cadastro */
 .cadastro-container h2 {
   margin-bottom: 20px;
   color: #333;
 }
 
-/* Inputs */
 .input-group {
   margin-bottom: 15px;
   text-align: left;
@@ -84,7 +76,6 @@ body {
   box-shadow: 0 0 5px rgba(37,117,252,0.5);
 }
 
-/* Botão */
 button {
   width: 100%;
   padding: 12px;
@@ -101,7 +92,6 @@ button:hover {
   background: #1a5ed7;
 }
 
-/* Link de cadastro */
 .register-link {
   margin-top: 15px;
   font-size: 14px;
@@ -116,7 +106,6 @@ button:hover {
   text-decoration: underline;
 }
 
-/* Responsividade */
 @media (max-width: 480px) {
   .cadastro-wrapper {
     flex-direction: column;
