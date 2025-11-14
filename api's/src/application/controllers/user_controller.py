@@ -65,7 +65,7 @@ class UserController:
         agendamentos_data = [
             {
                 "id": ag.id,
-                "profissional": ag.profissional,
+                "profissional": ag.cabeleireiro_agendamento.nome if ag.cabeleireiro_agendamento else None,
                 "servico": ag.servico,
                 "data": ag.data.strftime("%d/%m/%Y"),
                 "hora": ag.hora.strftime("%H:%M"),

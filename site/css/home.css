@@ -1,9 +1,9 @@
 :root{
-  --bg:#0f0f0f;
+  --bg:#c49a6c;
   --card: #c49a6c;
   --accent:#c49a6c;
-  --muted:#9aa4ad;
-  --text:#000000;
+  --muted:#c49a6c;
+  --text:#c49a6c;
   --container:1200px;
   --radius:12px;
   font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -27,7 +27,7 @@ body{
 
 .site-header{
   border-bottom:1px solid rgba(255,255,255,0.04);
-  background:linear-gradient(180deg, rgb(255, 255, 255), rgba(10, 10, 10, 0.12));
+  background:linear-gradient(180deg, #111827, #111827);
   position:sticky;
   top:0;
   z-index:50;
@@ -39,17 +39,17 @@ body{
   gap:1rem;
   padding:0.75rem 1rem;
 }
-.brand{display:flex;align-items:center;gap:0.75rem}
+.brand{display:flex;align-items:center;gap:0.75rem; color: #c49a6c;}
 .logo{
   width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c5b3a);
-  display:flex;align-items:center;justify-content:center;font-weight:700;font-family:'Playfair Display',serif;color:#fff;font-size:20px;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-family:'Playfair Display',serif;color:#000000;font-size:20px;
   box-shadow:0 6px 18px rgba(0,0,0,0.5);
 }
 .brand h1{margin:0;font-size:1.05rem}
-.brand .tag{margin:0;font-size:0.8rem;color:#000000}
+.brand .tag{margin:0;font-size:0.8rem;color:#c49a6c}
 
 .main-nav a{
-  color:#000000;text-decoration:none;margin-left:1rem;font-weight:600;font-size:0.95rem;
+  color:#c49a6c;text-decoration:none;margin-left:1rem;font-weight:600;font-size:0.95rem;
 }
 .main-nav .btn-outline{
   padding:0.45rem 0.75rem;border:1px solid rgba(255,255,255,0.08);border-radius:8px;

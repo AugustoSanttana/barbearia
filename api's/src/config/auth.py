@@ -1,13 +1,14 @@
 import jwt
 import datetime
 from flask import request, jsonify
+from src.infrastructure.model_cabeleireiro import Cabeleireiro
 
 SECRET_KEY = "sua_chave_super_secreta"  
 
 def gerar_token(user_id):
     payload = {
         "user_id": user_id,
-        "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=24)  
+        "exp": datetime.datetime.utcnow() + datetime.timedelta(days=365)  
     }
     return jwt.encode(payload, SECRET_KEY, algorithm="HS256")
 
@@ -22,7 +23,13 @@ def verificar_token(func):
 
         try:
             dados = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
-            request.user_id = dados["user_id"]
+            user_id = dados["user_id"]
+            request.user_id = user_id
+
+            # Adicionado para verificar se o usuário é admin
+            cabeleireiro = Cabeleireiro.query.get(user_id)
+            if cabeleireiro:
+                request.is_admin = cabeleireiro.is_admin
         except jwt.ExpiredSignatureError:
             return jsonify({"erro": "Token expirado"}), 401
         except jwt.InvalidTokenError:

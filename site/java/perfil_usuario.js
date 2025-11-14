@@ -59,7 +59,7 @@ async function cancelarAgendamento(id) {
   if (!confirm("Tem certeza que deseja cancelar este agendamento?")) return;
 
   const response = await fetch(
-    `http://127.0.0.1:5000/barbearia/cancelar/${id}`,
+    `http://127.0.0.1:5000/agendamento/cancelar/${id}`,
     {
       method: "PUT",
       headers: { Authorization: `Bearer ${token}` },

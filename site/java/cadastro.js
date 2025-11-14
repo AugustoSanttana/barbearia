@@ -24,7 +24,7 @@ async function cadastro() {
         if (response.ok) {
             console.log(data);
             alert(data.mensagem || "Cadastro realizado com sucesso!");
-            window.location.href = '../html/home_perfil.html';
+            window.location.href = '../html/home_usuario.html';
         } else {
             alert(data.erro || "Erro no cadastro. Por favor, tente novamente.");
         }
