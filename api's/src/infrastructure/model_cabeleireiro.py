@@ -15,6 +15,7 @@ class Cabeleireiro(db.Model):
     senha = db.Column(db.String(600), nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
 
+
     servicos = db.relationship(
         "Servico",
         backref="cabeleireiro",

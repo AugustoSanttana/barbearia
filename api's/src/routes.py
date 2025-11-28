@@ -2,6 +2,7 @@ from src.application.controllers.user_controller import UserController
 from src.application.controllers.agendamento_controller import AgendamentoController
 from src.application.controllers.cabeleireiro_controller import CabeleireiroController
 from src.application.controllers.produto_controller import ProdutoController
+from src.application.controllers.avaliacao_controller import AvaliacaoController
 from flask import jsonify, make_response, send_from_directory
 from flask import Blueprint
 from flask import request
@@ -14,6 +15,7 @@ user_routes = Blueprint("user_routes", __name__)
 agendamento_routes = Blueprint("agendamento_routes", __name__)
 cabeleireiro_routes = Blueprint("cabeleireiro_routes", __name__)
 produtos_routes = Blueprint("produtos_routes", __name__)
+avaliacao_routes = Blueprint("avaliacao_routes", __name__)
 
 #-------------------------------------#
 
@@ -104,4 +106,12 @@ def atualizar_produto(id):
 def deletar_produto(id):
     return ProdutoController.deletar_produto
 
+#-------------------------------------
 
+@avaliacao_routes.route("/", methods=["POST"])
+def criar_avaliacao():
+    return AvaliacaoController.criar_avaliacao()
+
+@avaliacao_routes.route("/listar", methods=["GET"])
+def listar_avaliacoes():
+    return AvaliacaoController.listar_avaliacoes()

@@ -50,7 +50,11 @@ class UserController:
             return jsonify({"erro": "Credenciais inválidas"}), 401
 
         token = gerar_token(usuario.id)
-        return jsonify({"token": token})
+        return jsonify({
+        "token": token,
+        "id": usuario.id,
+        "nome": usuario.nome
+})
     
     @staticmethod
     @verificar_token

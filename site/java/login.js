@@ -48,6 +48,11 @@ async function login() {
         localStorage.setItem("tipoUsuario", data.tipo); 
     }
 
+    if (data.nome && data.id) {
+        localStorage.setItem("usuario_nome", data.nome);
+        localStorage.setItem("usuario_id", data.id);
+    }
+
     if (data.tipo === "cabeleireiro") {
         window.location.href = '../html/home_cabeleireiro.html';
     } else {

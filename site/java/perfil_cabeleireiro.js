@@ -20,6 +20,7 @@ async function carregarPerfilCabeleireiro() {
 
     document.getElementById("nomeUsuario").innerText = data.nome;
     document.getElementById("emailUsuario").innerText = data.email;
+    document.getElementById("notaMedia").innerText = data.nota_media || "N/A";
 
     const servicosList = document.getElementById("servicos");
     servicosList.innerHTML = "";

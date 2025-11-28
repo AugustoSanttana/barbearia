@@ -26,7 +26,6 @@ def verificar_token(func):
             user_id = dados["user_id"]
             request.user_id = user_id
 
-            # Adicionado para verificar se o usuário é admin
             cabeleireiro = Cabeleireiro.query.get(user_id)
             if cabeleireiro:
                 request.is_admin = cabeleireiro.is_admin
