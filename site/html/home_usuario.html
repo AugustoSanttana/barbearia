@@ -26,6 +26,7 @@
         <a href="agendamento.html" class="btn-perfil" id="linkAgenda">Agenda</a>
         <a href="#contato" class="btn-outline">Contato</a>
         <a href="carrinho.html">Carrinho</a>
+        <button id="btnAbrirModalAvaliacao" class="btn-outline">Avaliar</button>
         <button id="btnLogout" class="btn-outline">Sair</button>
       </nav>
     </div>
@@ -76,22 +77,48 @@
     </section>
   </main>
 
+  
+  <div id="modalAvaliacao" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Avalie nosso Serviço</h2>
+      
+      <div class="form-group">
+        <label for="selectCabeleireiroAvaliacao">Selecione o Profissional:</label>
+        <select id="selectCabeleireiroAvaliacao" required>
+          <option value="">Carregando...</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Sua Nota:</label>
+        <div class="estrelas" id="ratingEstrelas">
+          <span data-value="1">☆</span><span data-value="2">☆</span><span data-value="3">☆</span><span data-value="4">☆</span><span data-value="5">☆</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="comentarioAvaliacao">Deixe um comentário (opcional):</label>
+        <textarea id="comentarioAvaliacao" rows="3" placeholder="Sua experiência foi..."></textarea>
+      </div>
+
+      <button id="btnEnviarAvaliacao" class="btn-primary">Enviar Avaliação</button>
+    </div>
+  </div>
+
   <script>
-   
     const token = localStorage.getItem('token');
     if (!token) {
         alert("Você precisa estar logado para acessar esta página.");
         window.location.href = 'login.html';
     }
 
-   
     document.getElementById('btnLogout').addEventListener('click', () => {
         localStorage.removeItem('token');
         alert("Você saiu com sucesso!");
         window.location.href = 'login.html';
     });
 
-    
     document.getElementById('linkAgenda').addEventListener('click', function(e) {
         if (!token) {
             e.preventDefault();
@@ -99,6 +126,19 @@
             window.location.href = 'login.html';
         }
     });
+
+    
+    document.getElementById('btnAvaliar').addEventListener('click', () => {
+
+      const nota = prompt("De 1 a 5, qual nota você dá para a barbearia?");
+      if (nota && !isNaN(nota) && nota >= 1 && nota <= 5) {
+        alert(`Obrigado por avaliar com nota ${nota}! Seu feedback é muito importante.`);
+        
+      } else if (nota !== null) { 
+        alert("Por favor, insira um número válido entre 1 e 5.");
+      }
+    });
+
   </script>
 </body>
 </html>

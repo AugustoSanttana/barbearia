@@ -149,6 +149,15 @@ class CabeleireiroController:
             if not cabeleireiro:
                 return jsonify({"erro": "Cabeleireiro não encontrado"}), 404
 
+            
+            avaliacoes = cabeleireiro.avaliacoes.all()
+            if avaliacoes:
+                nota_media = sum(a.nota for a in avaliacoes) / len(avaliacoes)
+                nota_media = round(nota_media, 1)  
+            else:
+                nota_media = "N/A"  
+            
+
             servicos = [s.to_dict() for s in getattr(cabeleireiro, "servicos", [])]
 
             agendamentos = Agendamento.query.filter_by(cabeleireiro_id=cabeleireiro.id).all()
@@ -169,7 +178,8 @@ class CabeleireiroController:
                 "nome": cabeleireiro.nome,
                 "email": cabeleireiro.email,
                 "servicos": servicos,
-                "agendamentos": agendamentos_data
+                "agendamentos": agendamentos_data,
+                "nota_media": nota_media 
             }
 
             return jsonify(perfil), 200

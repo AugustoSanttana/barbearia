@@ -15,6 +15,12 @@ class Cabeleireiro(db.Model):
     senha = db.Column(db.String(600), nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
 
+    avaliacoes = db.relationship(
+        "Avaliacao",
+        back_populates="cabeleireiro",
+        lazy= 'dynamic'
+    )
+
     servicos = db.relationship(
         "Servico",
         backref="cabeleireiro",

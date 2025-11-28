@@ -11,6 +11,12 @@ class Usuario(db.Model):
     cpf = db.Column(db.String(11), unique=True, nullable=False)
     endereco = db.Column(db.String(100), nullable=False)
 
+    avaliacoes = db.relationship(
+        "Avaliacao",
+        back_populates="usuario",
+        cascade="all, delete-orphan"
+    )
+
 
     def to_dict(self):
         return  {
